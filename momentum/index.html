@@ -7,30 +7,45 @@
         <title>Document</title>
     </head>
     <body>
-        <form id="login-form" class="hidden">
-            <!-- form의 내부에 있는 input은 HTML 자체 기능으로 개발자를 도와줄 수 있음. required: 필수 입력, maxlength: 최대 글자 수 -->
-            <input
-                required
-                maxlength="15"
-                type="text"
-                placeholder="What is your name?"
-            />
-            <input type="submit" value="Log In" />
-            <!-- <button>Log In</button> -->
-        </form>
-        <h2 id="clock">00:00:00</h2>
-        <h1 id="greeting" class="hidden"></h1>
-        <form id="todo-form">
-            <input type="text" placeholder="Write a To DO and Press Enter" required />
-        </form>
-        <ul id="todo-list"></ul>
-        <div id="quote">
-            <span></span>
-            <span></span>
+        <div class="center">
+            <h2 id="clock">00:00:00</h2>
+            <form id="login-form" class="hidden">
+                <!-- form의 내부에 있는 input은 HTML 자체 기능으로 개발자를 도와줄 수 있음. required: 필수 입력, maxlength: 최대 글자 수 -->
+                <input
+                    required
+                    maxlength="15"
+                    type="text"
+                    placeholder="What is your name? and Press Enter."
+                />
+                <!-- <button>Log In</button> -->
+            </form>
+            <h1 id="greeting" class="hidden"></h1>
         </div>
-        <div id="weather">
-            <span></span>
-            <span></span>
+
+        <div class="todo-container">
+            <form id="todo-form">
+                <input type="text" placeholder="Write Anyone!" required />
+            </form>
+            <ul id="todo-list"></ul>
+        </div>
+
+        <div class="bottom">
+            <div id="quote">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div id="weather" class="weather-container">
+            <div class="weather-details">
+                <img
+                    id="icon"
+                    src="https://openweathermap.org/img/wn/13n@2x.png"
+                    alt="Weather Icon"
+                />
+                <span class="temp"></span>
+            </div>
+            <span class="city"></span>
         </div>
         <script src="js/clock.js"></script>
         <script src="js/greetings.js"></script>

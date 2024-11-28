@@ -13,9 +13,12 @@ function saveToDos() {
 function deleteToDo(event) {
     // event에 저장된 object의 element들 중 눌러진 target의 parentElement를 가져옴.
     const li = event.target.parentElement;
-    toDos = toDos.filter((todo) => todo.id !== parseInt(li.id));
-    saveToDos();
-    li.remove();
+    li.classList.add("removing");
+    setTimeout(() => {
+        toDos = toDos.filter((todo) => todo.id !== parseInt(li.id));
+        saveToDos();
+        li.remove();
+    }, 450);
 }
 
 function paintToDo(newToDo) {

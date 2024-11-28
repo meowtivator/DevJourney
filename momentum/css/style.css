@@ -1,65 +1,278 @@
-.hidden {
-    display: none;
+:root {
+    --text-color-rgb: 255, 255, 255;
+    --text-shadow: 1px 1px 3px rgba(var(--text-color-rgb), 0.5);
 }
-/* 
-img {
-    position: absolute;
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from{
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+.lightBg {
+    --text-color: black;
+}
+.darkBg {
+    --text-color: rgb(237, 237, 237);
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Arial", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    text-shadow: var(--text-shadow);
+}
+
+.background img {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    left: 0px;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    z-index: -1;
-    opacity: 80%;
     object-fit: cover;
+    z-index: -1;
 }
 
-body {
-    font-family: "East Sea Dokdo", cursive;
+.background::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.25);
+    z-index: 0;
 }
 
-.title {
-    border: 1px solid black;
-    font-size: 80px;
-    margin: 50px;
-    text-align: center;
-    z-index: 2;
-}
-
-#quotes {
-    margin-top: 50px;
-    border: 1px solid black;
-    font-size: 40px;
-    display: grid;
-    place-items: center;
-    text-decoration: underline 3px solid black;
-    text-shadow: 2px 2px 2px rgb(189, 187, 187);
-    z-index: 2;
-}
-
-.todo {
-    margin-top: 150px;
-    margin-left: 220px;
-    width: 300px;
-    height: 500px;
-    border: 1px solid blue;
-    float: left;
-    box-sizing: border-box;
-    z-index: 2;
-}
-
-.weather {
-    margin: 150px;
-    width: 300px;
-    height: 500px;
-    border: 1px solid blue;
-    float: right;
-    box-sizing: border-box;
-    z-index: 2;
-}
-
-.HELLO {
+.center {
     position: absolute;
+    /* 왼쪽 상단 모서리를 중앙에 배치 */
+    top: 50%;
+    left: 50%;
+    /* 요소를 자기 크기의 가로와 세로의 50%만큼 왼쪽과 위로 이동. */
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--text-color);
     z-index: 1;
-} */
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    width: auto;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+
+#clock {
+    font-size: 96px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.weather-container{
+    position:fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: rgba(180, 180, 180, 0.5);
+    border: none;
+    border-radius: 8px;
+    padding-bottom: 5px;
+    align-items: center;
+    color:var(--text-color);
+    text-shadow: var(--text-shadow);
+    top: 10px;
+    right: 20px;
+    z-index: 2;
+}
+
+.weather-details img{
+    width:60px;
+    height:40px;
+    object-fit:cover;
+    object-position: center;
+}
+
+.weather-details{
+    display: flex;
+    text-align: left;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.weather-details .city{
+    font-size: 1rem;
+}
+
+.weather-container .temp{
+    font-size: 1.5rem;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-form input {
+    text-shadow: var(--text-shadow);
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+    border-bottom: 2px solid var(--text-color);
+    border-radius: 4px;
+    background: transparent;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
+
+#login-form input::placeholder {
+    color: var(--text-color);
+    font-style: italic;
+    opacity: 1;
+}
+
+#login-form input:hover {
+    border-bottom: 2px solid rgba(var(--text-color-rgb), 0.8);
+    background: rgba(var(--text-color-rgb), 0.2);
+}
+
+#login-form input:focus {
+    border-bottom: 3px solid rgba(var(--text-color-rgb), 1);
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+#quote {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-style: italic;
+}
+
+#greeting {
+    font-size: 50px;
+    text-align: center;
+    animation: fadeIn 0.7s ease-in-out forwards;
+}
+
+#weather {
+    display: flex;
+    align-items: center;
+}
+
+.todo-container{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    max-width: 200px;
+    padding:20px;
+    border-radius: 10px;
+    background-color: rgba(119, 119, 119, 0.5);
+    box-shadow: 0 5px 15px rgba(0, 0,0, 0.2);
+    z-index: 2;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+#todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#todo-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    /* margin 에 대해서 더 자세히 알아보기 */
+    margin: 5px 0;
+    border-radius: 8px;
+    background-color: rgba(var(--text-color-rgb), 0.1);
+    transition: background-color 0.3s ease;
+}
+
+#todo-list li:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#todo-list li.removing{
+    animation: fadeOut 0.5s forwards;
+}
+
+#todo-list li span{
+    /* flex: 1의 뜻은? */
+    flex: 1;
+    font-size: 14px;
+    /* 줄바꿈 */
+    overflow-wrap: break-word;
+}
+
+#todo-list li button{
+    border: none;
+    background: transparent;
+    /* cursor?? */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#todo-list li button:hover{
+    transform: scale(1.25);
+    color: rgba(var(--text-color-rgb), 0.8);
+}
+
+#todo-form input{
+    width: calc(85%);
+    padding: 10px 15px;
+    border: none;
+    border-bottom: 2px solid var(--text-color);
+    background: transparent;
+    color: var(--text-color);
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#todo-form input::placeholder{
+    color: var(--text-color);
+    text-align: center;
+    text-shadow: var(--text-shadow);
+}
+
+/* #todo-form */
+
+.hidden {
+    display: none !important;
+}
