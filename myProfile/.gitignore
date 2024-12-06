@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+
+# Dist folder
+dist/
+
+# macOS System File
+.DS_Store
+
+# Windows System File
+Thumbs.db
+Desktop.ini
+
+# VS Code Setting File
+.vscode/
+
+# Temporary File
+*.tmp
+*.swp
+
+# Enviroment Value File (more update)
+.env
+config.json
