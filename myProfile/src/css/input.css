@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+    body{
+        @apply font-body;
+    }
+}
+
+.card {
+    @apply rounded-xl bg-gray-100 p-4 shadow-md h-60 flex flex-col justify-center items-center text-center transition transform hover:-translate-y-2;
+  }
+
+.fade-in-up {
+    @apply opacity-0 translate-y-4 transition-all duration-500 ease-out;
+}
+
+.fade-in-up-active {
+    @apply opacity-100 translate-y-0;
+}

@@ -5,29 +5,117 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- Noto Sans KR: Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Pretendard: CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../dist/output.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
   </head>
-  <body>
-    <header class="bg-blue-500 text-white py-4">
+  <body
+    class="bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500 ease-in-out"
+  >
+    <header class="relative bg-blue-500 text-white py-4">
       <h1 class="text-center text-3xl font-bold">나의 프로필 페이지</h1>
+      <button
+        id="toggleDarkmode"
+        class="absolute top-3 right-4 w-10 h-10 flex items-center justify-center"
+      >
+        <span
+          class="material-icons text-yellow-500 transition-opacity duration-300 dark:opacity-0"
+          >light_mode</span
+        >
+        <span
+          class="material-icons text-gray-300 absolute transition-opacity duration-300 opacity-0 dark:opacity-100"
+          >dark_mode</span
+        >
+      </button>
     </header>
     <main class="max-w-4xl mx-auto mt-8 p-4">
-      <section class="flex flex-col items-center">
+      <section
+        id="profileSection"
+        class="flex flex-col items-center fade-in-up"
+      >
+        <!-- 반응형 디자인 md:flex-row md:items-start md:justify-center md:gap-8 -->
         <img
           src="img/meow.jpg"
           alt="프로필 사진"
           class="w-48 h-48 rounded-full object-cover"
         />
         <h2 class="text-2xl font-semibold mt-4">도시우</h2>
-        <p class="text-center mt-2 text-gray-700">
+        <p class="text-center mt-2">
           안녕하세요! 저는 웹 개발을 배우고 있는 도시우입니다!
         </p>
       </section>
-      <section class="mt-8">
+      <!-- 진행중 프로젝트 추가  -->
+      <section id="projectSection" class="mt-8 fade-in-up">
+        <h3 class="text-xl font-semibold mb-4">프로젝트 현황</h3>
+        <ul class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <li class="card relative overflow-hidden group">
+            <img
+              src="img/meow.jpg"
+              alt="프로젝트 썸네일"
+              class="absolute top-0 left-0 w-full h-full mb-2 object-cover opacity-60 z-[-1] transition-all duration-500 group-hover:opacity-90 group-hover:scale-105"
+            />
+            <div
+              class="relative text-center transition-all transform duration-500"
+            >
+              <h4
+                class="absolute inset-0 text-3xl font-semibold text-white drop-shadow-md transition-all transform duration-500 group-hover:-translate-y-7"
+              >
+                프로필 페이지
+              </h4>
+              <p
+                class="text-sm text-white drop-shadow-md opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-7"
+              >
+                Tailwind CSS를 통해 프로필 페이지를 제작하는 프로젝트입니다.
+              </p>
+              <div class="flex gap-4 justify-center mt-2 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-7">
+                <a href="https://github.com/username/project1" target="_blank" class="text-blue-500 hover:underline">GitHub</a>
+                <a href="https://project1-demo.example.com" target="_blank" class="text-blue-500 hover:underline">Live Demo</a>
+              </div>
+            </div>
+          </li>
+          <li class="card">프로젝트 2</li>
+          <li class="card">프로젝트 3</li>
+          <li class="card">프로젝트 4</li>
+          
+        </ul>
+      </section>
+      <!-- 기술 스택 섹션 -->
+      <section id="techStack" class="mt-8 opacity-0 translate-y-4 transition-all duration-500 ease-out">
+        <h3 class="text-xl font-semibold mb-4">기술 스택</h3>
+        <ul class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <li class="flex flex-col items-center">
+            <img src="img/icons/html5.png" alt="HTML5" class="w-12 h-12 mb-2" />
+            <span class="text-sm">HTML5</span>
+          </li>
+          <li class="flex flex-col items-center">
+            <img src="img/icons/css3.png" alt="CSS3" class="w-12 h-12 mb-2" />
+            <span class="text-sm">CSS3</span>
+          </li>
+          <li class="flex flex-col items-center">
+            <img src="img/icons/js.png" alt="JavaScript" class="w-12 h-12 mb-2" />
+            <span class="text-sm">JavaScript</span>
+          </li>
+          <li class="flex flex-col items-center">
+            <img src="img/icons/vue.png" alt="Vue.js" class="w-12 h-12 mb-2" />
+            <span class="text-sm">Vue.js</span>
+          </li>
+        </ul>
+      </section>
+      
+      <!-- 연락처 섹션 -->
+      <section id="connectSection" class="mt-8 fade-in-up">
         <h3 class="text-xl font-semibold mb-4">연락처</h3>
         <ul class="space-y-2">
           <li class="flex items-center">
@@ -39,5 +127,8 @@
         </ul>
       </section>
     </main>
+
+    <script src="../src/js/toggle-dark.js"></script>
+    <script src="../src/js/load.js"></script>
   </body>
 </html>
